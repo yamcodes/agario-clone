@@ -106,6 +106,7 @@ dist
 .vscode/
 
 scripts/out/
+app-bundled.js
 
 .DS_Store
 
