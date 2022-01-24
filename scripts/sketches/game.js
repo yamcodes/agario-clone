@@ -9,7 +9,8 @@ const game = p5 => {
   p5.setup = _ => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight)
     blob = new Blob(p5, 0, 0, settings.blob.initialRadius, '#cf1898')
-    const numberOfPellets = (p5.windowWidth * p5.windowHeight) / (settings.pellets.radius * settings.pellets.radius) * (settings.pellets.density)
+    // BUG density changes with screen size, when the window is small it appears there is less density
+    const numberOfPellets = (settings.game.width * settings.game.height) / (p5.PI * settings.pellets.radius * settings.pellets.radius) * (settings.pellets.density)
     pellets = new Pellets(p5, numberOfPellets, blob)
   }
 

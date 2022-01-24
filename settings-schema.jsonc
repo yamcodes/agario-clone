@@ -106,7 +106,6 @@
                   "$id": "#/properties/blob/properties/eatDistance",
                   "type": "number",
                   "maximum": 1,
-                  "minimum": 0,
                   "title": "The eatDistance schema",
                   "description": "An explanation about the purpose of this instance.",
                   "default": 0,

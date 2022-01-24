@@ -6,11 +6,11 @@
         "strokeOpacity": 0.2,
         "maxSpeed": 5,
         "eatDistance": 0.5,
-        "foodMagnetStrength": 4
+        "foodMagnetStrength": 5
     },
     "pellets": {
         "radius": 16,
-        "density": 0.1
+        "density": 0.5
     },
     "game": {
         "width": 8192,

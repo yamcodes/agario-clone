@@ -111,3 +111,5 @@ app-bundled.js
 .DS_Store
 
 .eslintrc.json
+
+.gitignore_folder
