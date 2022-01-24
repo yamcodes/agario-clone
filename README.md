@@ -20,7 +20,7 @@
 💪  
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;🔴 **Accurate:** true to the feel of the game.  
-&nbsp;&nbsp;&nbsp;&nbsp;🟠 **Customizable:** configure every aspect of the game.  
+&nbsp;&nbsp;&nbsp;&nbsp;🟠 **Customizable:** configure all aspects of the game.  
 &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Fun:** create cool new mods in seconds.  
 &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Extendable:** add any mod imaginable.  
 &nbsp;&nbsp;&nbsp;&nbsp;🔵 **Feature rich:** has most of agar.io's features.  
