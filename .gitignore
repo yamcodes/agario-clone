@@ -108,3 +108,5 @@ dist
 scripts/out/
 
 .DS_Store
+
+.eslintrc.json
