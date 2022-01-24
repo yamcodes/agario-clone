@@ -38,17 +38,23 @@
 
 ### Step 1. Download
 
-`git clone https://github.com/yamyam263/agario-clone.git`
+```
+git clone https://github.com/yamyam263/agario-clone.git
+```
 
 (Or use one of the other ways described in step 0 to download this repository to your system.)
 
 ### Step 2. Install
 
-`npm install`
+```
+npm install
+```
 
 ### Step 3. Run
 
-`npm start`
+```
+npm start
+```
 
 ✔️ You're done! Head over to `localhost:3000` on your browser to play the game!
 
