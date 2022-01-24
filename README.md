@@ -19,12 +19,12 @@
 **The easily tweakable clone for modders, developers and .io games enthusiasts of any level!**
 💪  
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;🔴 **Accurate:** true to the feel of the game.  
-&nbsp;&nbsp;&nbsp;&nbsp;🟠 **Customizable:** configure all aspects of the game.  
-&nbsp;&nbsp;&nbsp;&nbsp;🟡 **Fun:** create cool new mods in seconds.  
-&nbsp;&nbsp;&nbsp;&nbsp;🟢 **Extendable:** add any mod imaginable.  
-&nbsp;&nbsp;&nbsp;&nbsp;🔵 **Feature rich:** has most of agar.io's features.  
-&nbsp;&nbsp;&nbsp;&nbsp;🟣 **Easy:** use [p5.js](https://p5js.org/) to add features in minutes.  
+&nbsp;&nbsp;🔴 **Accurate:** true to the feel of the game.  
+&nbsp;&nbsp;🟠 **Customizable:** configure all aspects of the game.  
+&nbsp;&nbsp;🟡 **Fun:** create cool new mods in seconds.  
+&nbsp;&nbsp;🟢 **Extendable:** add any mod imaginable.  
+&nbsp;&nbsp;🔵 **Feature rich:** has most of agar.io's features.  
+&nbsp;&nbsp;🟣 **Easy:** use [p5.js](https://p5js.org/) to add features in minutes.  
 
 
 ## 🎯 Project Goals
