@@ -18,11 +18,11 @@
 
 **The easily tweakable clone for modders, developers and .io games enthusiasts of any level!**
 🟢
-- **Accurate:** true to the feel of the real game.
+- **Accurate:** at the base level, true to the feel of the game.
 - **Customizable:** configure every aspect of the game.
 - **Fun:** create cool new mods in seconds.
 - **Extendable:** add any mod imaginable.
-- **Feature rich:** implements most basic features of teh game.
+- **Feature rich:** implements most basic features of the game.
 - **Easy:** use [p5.js](https://p5js.org/) to add features in minutes.
 
 <p align="center">
