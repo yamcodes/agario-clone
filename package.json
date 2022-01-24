@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npx watchify app.js -o scripts/out/app-bundled.js -p esmify",
     "serve": "live-server --port=3000 -q --host=localhost",
-    "dev": "concurrently --kill-others \"npm run watch\" \"npm run serve\""
+    "dev": "concurrently --kill-others \"npm run watch\" \"npm run serve\"",
+    "postinstall": "patch-package"
   },
   "author": "yam-b",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
-    "esmify": "^2.1.1"
+    "esmify": "^2.1.1",
+    "patch-package": "^6.4.7"
   }
 }
