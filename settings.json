@@ -10,7 +10,7 @@
     },
     "pellets": {
         "radius": 16,
-        "density": 0.5
+        "density": 0.01
     },
     "game": {
         "width": 8192,
