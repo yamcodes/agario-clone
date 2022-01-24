@@ -1,0 +1,26 @@
+{
+    "$schema": "./settings-schema.jsonc",
+    "blob": {
+        "initialRadius": 32,
+        "strokeSize": 9,
+        "strokeOpacity": 0.2,
+        "maxSpeed": 5,
+        "eatDistance": 0.5,
+        "foodMagnetStrength": 4
+    },
+    "pellets": {
+        "radius": 16,
+        "density": 0.1
+    },
+    "game": {
+        "width": 8192,
+        "height": 8192,
+        "useWindowSize": false,
+        "bgcolor": "#f2fbff",
+        "gridColor": "#e2e2e2",
+        "gridStrokeSize": 3,
+        "gridSize": 64,
+        "numberOfZoomModes": 9,
+        "initialZoomMode": 5
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "game-1",
+  "version": "0.0.1",
+  "description": "sandbox for a game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx watchify app.js -o scripts/out/app-bundled.js -p esmify",
+    "serve": "live-server --port=3000 -q --host=localhost",
+    "dev": "concurrently --kill-others \"npm run watch\" \"npm run serve\""
+  },
+  "author": "yam-b",
+  "license": "ISC",
+  "dependencies": {
+    "babelify": "^10.0.0",
+    "browser-resolve": "^2.0.0",
+    "color": "^4.2.0",
+    "live-server": "^1.2.1",
+    "p5": "^1.4.0",
+    "uniq": "^1.0.1",
+    "watchify": "^4.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "esmify": "^2.1.1"
+  }
+}
