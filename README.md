@@ -3,8 +3,8 @@
 
 <p align="center">
   🔴🟠🟡 Check out 
-  <a href="https://agar.io">agar.io</a>
-  today! 🟢🔵🟣
+  <a href="https://agar.io">Agar.io</a>
+  to learn more! 🟢🔵🟣
 </p>
 <h1></h1>
 
@@ -18,16 +18,14 @@
 
 **The easily tweakable clone for modders, developers and .io games enthusiasts of any level!**
 💪  
-🔴 **Accurate:** true to the feel of the game.  
-🟠 **Customizable:** configure every aspect of the game.  
-🟡 **Fun:** create cool new mods in seconds.  
-🟢 **Extendable:** add any mod imaginable.  
-🔵 **Feature rich:** has most of agar.io's features.  
-🟣 **Easy:** use [p5.js](https://p5js.org/) to add features in minutes.  
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;🔴 **Accurate:** true to the feel of the game.  
+&nbsp;&nbsp;&nbsp;&nbsp;🟠 **Customizable:** configure every aspect of the game.  
+&nbsp;&nbsp;&nbsp;&nbsp;🟡 **Fun:** create cool new mods in seconds.  
+&nbsp;&nbsp;&nbsp;&nbsp;🟢 **Extendable:** add any mod imaginable.  
+&nbsp;&nbsp;&nbsp;&nbsp;🔵 **Feature rich:** has most of agar.io's features.  
+&nbsp;&nbsp;&nbsp;&nbsp;🟣 **Easy:** use [p5.js](https://p5js.org/) to add features in minutes.  
 
-<p align="center">
-
-</p>
 
 ## 🎯 Project Goals
 
