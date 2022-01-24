@@ -22,7 +22,7 @@
 🟠 **Customizable:** configure every aspect of the game.  
 🟡 **Fun:** create cool new mods in seconds.  
 🟢 **Extendable:** add any mod imaginable.  
-🔵 **Feature rich:** implements most features of the game.  
+🔵 **Feature rich:** has most of agar.io's features.  
 🟣 **Easy:** use [p5.js](https://p5js.org/) to add features in minutes.  
 
 <p align="center">
