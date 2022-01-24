@@ -10,7 +10,7 @@
 
 🔴🟠🟡🟢🔵🟣
 <img
-  src="https://raw.githubusercontent.com/yamyam263/agario-clone/main/ss.png"
+  src="https://github.com/yamyam263/agario-clone/blob/main/sr.gif"
   alt="Starship with iTerm2 and the Snazzy theme"
   width="50%"
   align="right"
