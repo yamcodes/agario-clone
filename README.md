@@ -32,7 +32,7 @@
 
 ## 🛠️ Setup
 
-### Step 0. Prereequisites
+### Step 0. Prerequisites
 - [Node.js v17.4.0](https://nodejs.org/download/release/v17.4.0/) - the version which this project was created and tested on.
 - [Git](https://git-scm.com/downloads) - for cloning this repository. Alternatively, you can use [GitHub Desktop](https://desktop.github.com/), [GitHub CLI](https://cli.github.com/), or [Download ZIP](https://github.com/starship/starship/archive/refs/heads/master.zip).
 
