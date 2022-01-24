@@ -29,8 +29,9 @@
 
 ## 🎯 Project Goals
 
-The goal of this clone is to create a simple framework on which you can implement new features and learn how to create [io games](https://www.addictinggames.com/what-are-io-games).
-Inside `settings.json` you will find some settings that you can tweak to get inspired by different modifications, and have fun.
+* Provide a simple framework to allow rapidly implementing new Agar.io features. 
+* Teach how to create [io games](https://www.addictinggames.com/what-are-io-games) and how to work with [p5.js](https://p5js.org/) and JavaScript in general.
+* Be highly tweakable and inspire creation of new games.
 
 ## 🚀 Getting Started
 
@@ -68,6 +69,6 @@ Head over to `settings.json` using your favorite editor (for example: [vscode](h
 
 Please check out these previous works that helped inspire the creation of agario-clone. 🧠
 
-- **[Agario clone Javascript p5.js by kierin](https://codepen.io/xtarsy/pen/yVrgXp)** - inspired this entire project
+- **[Agario clone Javascript p5.js by kierin](https://codepen.io/xtarsy/pen/yVrgXp)** - inspired this entire project.
 
-- **[starship](https://github.com/starship/starship)** - inspired the structure of this `README.md`
+- **[starship](https://github.com/starship/starship)** - inspired the structure of this `README.md`.
