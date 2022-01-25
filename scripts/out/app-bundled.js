@@ -5,16 +5,19 @@ var _p = _interopRequireDefault(require("p5"));
 
 var _game = _interopRequireDefault(require("./scripts/sketches/game"));
 
+var _globals = require("./scripts/globals");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // BUG: zooming messes the game up, allows you to cheat and look ahead. potential fix: render only what's on screen (100% of it)
 const scene = new _p.default(_game.default);
+(0, _globals.setP5)(scene);
 console.log(scene);
 document.addEventListener('gesturestart', function (e) {
   e.preventDefault();
 });
 
-},{"./scripts/sketches/game":13,"p5":9}],2:[function(require,module,exports){
+},{"./scripts/globals":11,"./scripts/sketches/game":13,"p5":9}],2:[function(require,module,exports){
 /* MIT license */
 /* eslint-disable no-mixed-operators */
 const cssKeywords = require('color-name');
@@ -1988,7 +1991,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.increaseScore = increaseScore;
-exports.score = void 0;
+exports.score = exports.p5 = void 0;
+exports.setP5 = setP5;
 
 var _settings = _interopRequireDefault(require("../settings.json"));
 
@@ -2001,13 +2005,20 @@ function increaseScore() {
   exports.score = score = score + 1;
 }
 
+let p5;
+exports.p5 = p5;
+
+function setP5(sketch) {
+  exports.p5 = p5 = sketch;
+}
+
 },{"../settings.json":14}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Pellets = exports.Pellet = exports.Blob = void 0;
+exports.Pellets = exports.Pellet = exports.Fireballs = exports.Fireball = exports.Blob = void 0;
 
 var _color = _interopRequireDefault(require("color"));
 
@@ -2021,15 +2032,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 class Blob {
   /**
    * Create a Blob.
-   * @param  {number} sketch - Which sketch to spawn the Blob in.
    * @param  {number} x - X-axis of the Blob.
    * @param  {number} y - Y-axis of the Blob.
    * @param  {number} r - Radius of the Blob.
    * @param  {string} [color] (optional) Color of the Blob. Default to cyan.
    * @param  {boolean} [edible] (optional) Whether this Pellet is edible. Default to true.
    */
-  constructor(sketch, x, y, r, color = 'cyan', edible = true) {
-    this.p5 = sketch;
+  constructor(x, y, r, color = 'cyan', edible = true) {
     this.x = x;
     this.y = y;
     this.r = r;
@@ -2040,19 +2049,21 @@ class Blob {
 
 
   isEating(other) {
-    return this.p5.createVector(this.x, this.y).dist(this.p5.createVector(other.x, other.y)) < this.r + _settings.default.blob.strokeSize / 2 + other.r - 2 * _settings.default.blob.eatDistance * other.r;
+    return _globals.p5.createVector(this.x, this.y).dist(_globals.p5.createVector(other.x, other.y)) < this.r + _settings.default.blob.strokeSize / 2 + other.r - 2 * _settings.default.blob.eatDistance * other.r;
   }
 
   containing(other) {
-    return this.p5.createVector(this.x, this.y).dist(this.p5.createVector(other.x, other.y)) < this.r + _settings.default.blob.strokeSize / 2 + other.r - 2 * other.r;
+    return _globals.p5.createVector(this.x, this.y).dist(_globals.p5.createVector(other.x, other.y)) < this.r + _settings.default.blob.strokeSize / 2 + other.r - 2 * other.r;
   }
 
   eat(pellet) {
     // this.r-=0.01
-    // this.newRadius = this.p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
+    // this.newRadius = p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
     // pellet.edible = false
-    const b = this.p5.createVector(this.x, this.y);
-    const p = this.p5.createVector(pellet.x, pellet.y);
+    const b = _globals.p5.createVector(this.x, this.y);
+
+    const p = _globals.p5.createVector(pellet.x, pellet.y);
+
     const t = p.sub(b);
     t.setMag(t.mag() - _settings.default.blob.foodMagnetStrength);
     b.add(t);
@@ -2061,51 +2072,69 @@ class Blob {
 
     if (this.containing(pellet)) {
       pellet.alive = false;
-      this.newRadius = this.p5.sqrt(this.newRadius * this.newRadius + pellet.r * pellet.r); // pi*r^2 = sum of areas
+      this.newRadius = _globals.p5.sqrt(this.newRadius * this.newRadius + pellet.r * pellet.r); // pi*r^2 = sum of areas
 
       (0, _globals.increaseScore)(); // console.log('Score', score)
       // TODO better way to get the score (as the number of pellets eaten) by the radius
-      // this.r = this.p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
+      // this.r = p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
     } // pellet.alive = false
 
   }
 
-  draw() {
-    this.p5.fill(this.color);
-    this.p5.strokeWeight(_settings.default.blob.strokeSize);
-    this.p5.stroke((0, _color.default)(this.color).darken(_settings.default.blob.strokeOpacity).hex()); // this.r = this.newRadius
+  shootFireBall(fireballs, targetX, targetY, speed) {
+    const direction = _globals.p5.createVector(_globals.p5.mouseX - _globals.p5.width / 2, _globals.p5.mouseY - _globals.p5.height / 2);
 
-    this.r = this.p5.lerp(this.r, this.newRadius, 0.1);
-    this.p5.circle(this.x, this.y, this.r * 2);
-    this.p5.textSize(this.r / 3);
-    this.p5.textAlign(this.p5.CENTER, this.p5.CENTER);
-    this.p5.fill('white');
-    this.p5.stroke('black');
-    this.p5.strokeWeight(this.r / 32);
-    this.p5.text('yamyam263', this.x, this.y);
-    this.p5.textSize(this.r / 5);
-    this.p5.text(_globals.score, this.x, this.y + this.r / 2);
+    fireballs.shoot(this, direction, speed); // console.log(p5test)
+  }
+
+  draw() {
+    _globals.p5.fill(this.color);
+
+    _globals.p5.strokeWeight(_settings.default.blob.strokeSize);
+
+    _globals.p5.stroke((0, _color.default)(this.color).darken(_settings.default.blob.strokeOpacity).hex()); // this.r = this.newRadius
+
+
+    this.r = _globals.p5.lerp(this.r, this.newRadius, 0.1);
+
+    _globals.p5.circle(this.x, this.y, this.r * 2);
+
+    _globals.p5.textSize(this.r / 3);
+
+    _globals.p5.textAlign(_globals.p5.CENTER, _globals.p5.CENTER);
+
+    _globals.p5.fill('white');
+
+    _globals.p5.stroke('black');
+
+    _globals.p5.strokeWeight(this.r / 32);
+
+    _globals.p5.text('yamyam263', this.x, this.y);
+
+    _globals.p5.textSize(this.r / 5);
+
+    _globals.p5.text(_globals.score, this.x, this.y + this.r / 2);
     /**
      * Vector representing the location of the mouse, originated at the center of the canvas.
      * @type {number}
      */
 
-    const target = this.p5.createVector(this.p5.mouseX - this.p5.width / 2, this.p5.mouseY - this.p5.height / 2);
+
+    const target = _globals.p5.createVector(_globals.p5.mouseX - _globals.p5.width / 2, _globals.p5.mouseY - _globals.p5.height / 2);
+
     const slowDownBound = 2 * this.r;
     let speed = _settings.default.blob.maxSpeed;
-
-    if (target.mag() < slowDownBound) {
-      speed *= target.mag() / slowDownBound;
-    }
-
+    if (target.mag() < slowDownBound) speed *= target.mag() / slowDownBound;
     target.setMag(speed);
-    const pos = this.p5.createVector(this.x, this.y);
+
+    const pos = _globals.p5.createVector(this.x, this.y);
+
     pos.add(target);
     const a = -this.r / Math.sqrt(2);
     const w = _settings.default.game.width / 2 + a;
     const h = _settings.default.game.height / 2 + a;
-    this.x = this.p5.constrain(pos.x, -w, w);
-    this.y = this.p5.constrain(pos.y, -h, h);
+    this.x = _globals.p5.constrain(pos.x, -w, w);
+    this.y = _globals.p5.constrain(pos.y, -h, h);
   }
 
 }
@@ -2117,20 +2146,21 @@ exports.Blob = Blob;
 class Pellet extends Blob {
   /**
    * Create a Pellet.
-   * @param  {number} sketch - Which sketch to spawn the Pellet in.
    * @param  {number} x - X-axis of the Pellet.
    * @param  {number} y - Y-axis of the Pellet.
    */
-  constructor(sketch, x, y) {
-    super(sketch, x, y, _settings.default.pellets.radius, Pellet.getRandomColor());
+  constructor(x, y) {
+    super(x, y, _settings.default.pellets.radius, Pellet.getRandomColor(1));
     this.alive = true;
     this.edible = true;
   }
 
   draw() {
-    this.p5.noStroke();
-    this.p5.fill(this.color.hex());
-    this.p5.circle(this.x, this.y, this.r * 2);
+    _globals.p5.noStroke();
+
+    _globals.p5.fill(this.color.hex());
+
+    _globals.p5.circle(this.x, this.y, this.r * 2);
   }
 
   /**
@@ -2155,20 +2185,20 @@ exports.Pellet = Pellet;
 class Pellets {
   /**
    * Create a group of pellets.
-   * @param p5 - Which sketch to spawn the pellets in.
    * @param n - Number of pellets
    * @param blob - Blob of the player that eats the pellets
    */
-  constructor(sketch, n, blob) {
-    this.p5 = sketch;
+  constructor(n, blob) {
     this.n = n;
     this.blob = blob;
     this.pellets = [];
 
     for (let i = 0; i < this.n; i++) {
-      const x = this.p5.random(-_settings.default.game.width / 2 + _settings.default.pellets.radius, _settings.default.game.width / 2 - _settings.default.pellets.radius);
-      const y = this.p5.random(-_settings.default.game.height / 2 + _settings.default.pellets.radius, _settings.default.game.height / 2 - _settings.default.pellets.radius);
-      this.setPellet(i, new Pellet(this.p5, x, y));
+      const x = _globals.p5.random(-_settings.default.game.width / 2 + _settings.default.pellets.radius, _settings.default.game.width / 2 - _settings.default.pellets.radius);
+
+      const y = _globals.p5.random(-_settings.default.game.height / 2 + _settings.default.pellets.radius, _settings.default.game.height / 2 - _settings.default.pellets.radius);
+
+      this.setPellet(i, new Pellet(x, y));
     }
   }
 
@@ -2187,16 +2217,16 @@ class Pellets {
           this.blob.eat(pellet);
         }
 
-        if (pellet.x === this.p5.constrain(pellet.x, this.blob.x - this.p5.windowWidth / this.p5.getZoom() / 2 - pellet.r, this.blob.x + this.p5.windowWidth / this.p5.getZoom() / 2 + pellet.r) && pellet.y === this.p5.constrain(pellet.y, this.blob.y - this.p5.windowHeight / this.p5.getZoom() / 2 - pellet.r, this.blob.y + this.p5.windowHeight / this.p5.getZoom() / 2 + pellet.r)) {
-          pellet.draw(); // console.log('this.p5.getZoom', this.p5.getZoom())
+        if (pellet.x === _globals.p5.constrain(pellet.x, this.blob.x - _globals.p5.windowWidth / _globals.p5.getZoom() / 2 - pellet.r, this.blob.x + _globals.p5.windowWidth / _globals.p5.getZoom() / 2 + pellet.r) && pellet.y === _globals.p5.constrain(pellet.y, this.blob.y - _globals.p5.windowHeight / _globals.p5.getZoom() / 2 - pellet.r, this.blob.y + _globals.p5.windowHeight / _globals.p5.getZoom() / 2 + pellet.r)) {
+          pellet.draw(); // console.log('p5.getZoom', p5.getZoom())
         }
         /**
          * else if (
-          pellet.x === this.p5.constrain(pellet.x, this.blob.x - this.p5.windowWidth / this.p5.getZoom() / 2 - pellet.r, this.blob.x + this.p5.windowWidth / this.p5.getZoom() / 2 + pellet.r) &&
-          pellet.y === this.p5.constrain(pellet.y, this.blob.y - this.p5.windowHeight / this.p5.getZoom() / 2 - pellet.r, this.blob.y + this.p5.windowHeight / this.p5.getZoom() / 2 + pellet.r)
+          pellet.x === p5.constrain(pellet.x, this.blob.x - p5.windowWidth / p5.getZoom() / 2 - pellet.r, this.blob.x + p5.windowWidth / p5.getZoom() / 2 + pellet.r) &&
+          pellet.y === p5.constrain(pellet.y, this.blob.y - p5.windowHeight / p5.getZoom() / 2 - pellet.r, this.blob.y + p5.windowHeight / p5.getZoom() / 2 + pellet.r)
         ) {
           pellet.draw()
-          // console.log('this.p5.getZoom', this.p5.getZoom())
+          // console.log('p5.getZoom', p5.getZoom())
         } */
 
       }
@@ -2204,8 +2234,98 @@ class Pellets {
   }
 
 }
+/** Class representing a fireball. */
+
 
 exports.Pellets = Pellets;
+
+class Fireball extends Blob {
+  /**
+   * Create a Pellet.
+   * @param  {number} x - X-axis of the Fireball.
+   * @param  {number} y - Y-axis of the Fireball.
+   * @param  {number} direction - Direction of the Fireball.
+   * @param  {number} speed - Speed of the Fireball.
+   */
+  constructor(x, y, direction, speed) {
+    super(x, y, _settings.default.fireball.radius, Fireball.getColor());
+    this.direction = direction;
+    this.speed = speed;
+    this.newSpeed = speed; // this.alive = true
+    // this.edible = true
+  }
+
+  draw() {
+    _globals.p5.noStroke();
+
+    _globals.p5.fill(this.color.hex());
+
+    _globals.p5.circle(this.x, this.y, this.r * 2);
+
+    const loc = _globals.p5.createVector(this.x, this.y);
+
+    const travel = _globals.p5.createVector(this.direction.x, this.direction.y); //   this.speed = p5.lerp(this.speed, settings.fireball.speed * 5, 0.01)
+
+
+    travel.setMag(this.speed);
+    const res = loc.add(travel);
+    this.x = res.x;
+    this.y = res.y;
+  }
+
+  /**
+   * Get a random light Color.
+   * @param {number} [lighten] (Optional) How light should the random color be. 0 means don't lighten (Default), 1 means lighten all the way.
+   * @return {Color} A light color.
+   */
+  static getColor() {
+    // if (lighten < 0 || lighten > 1) throw new RangeError('lighten must be between 0 and 1.')
+    // const r = 256 - Number(Math.random() * 256 * (1 - lighten))
+    // const g = 256 - Number(Math.random() * 256 * (1 - lighten))
+    // const b = 256 - Number(Math.random() * 256 * (1 - lighten))
+    return _color.default.rgb([200, 0, 100]);
+  }
+
+}
+
+exports.Fireball = Fireball;
+
+class Fireballs {
+  /**
+   * Create a group of pellets.
+   * @param n - Number of fireballs
+   * @param blob - Blob of the player that shoots the fireballs
+   */
+  constructor(n, blob) {
+    this.n = 0;
+    this.blob = blob;
+    this.fireballs = []; // for (let i = 0; i < this.n; i++) {
+    //   this.setFireball(i, new Fireball(p5, blob.x, blob.y))
+    // }
+  }
+
+  shoot(blob, direction, speed) {
+    this.n++;
+    this.setFireball(this.n - 1, new Fireball(blob.x, blob.y, direction, speed));
+  }
+
+  getFireball(i) {
+    return this.fireballs[i];
+  }
+
+  setFireball(i, value) {
+    this.fireballs[i] = value;
+  }
+
+  draw() {
+    this.fireballs.forEach(fireball => {
+      fireball.draw();
+    });
+  }
+
+}
+
+exports.Fireballs = Fireballs;
 
 },{"../../settings.json":14,"../globals":11,"color":7}],13:[function(require,module,exports){
 "use strict";
@@ -2224,14 +2344,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const game = p5 => {
   let blob;
   let pellets;
+  let fireballs;
   let zoom = 1;
   let scrollZoom = (_settings.default.game.initialZoomMode - 1) / (_settings.default.game.numberOfZoomModes - 1);
 
   p5.setup = _ => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
-    blob = new _Blob.Blob(p5, 0, 0, _settings.default.blob.initialRadius, '#cf1898');
-    const numberOfPellets = p5.windowWidth * p5.windowHeight / (_settings.default.pellets.radius * _settings.default.pellets.radius) * _settings.default.pellets.density;
-    pellets = new _Blob.Pellets(p5, numberOfPellets, blob);
+    blob = new _Blob.Blob(0, 0, _settings.default.blob.initialRadius, '#ffa600');
+    const numberOfPellets = _settings.default.game.width * _settings.default.game.height / (p5.PI * _settings.default.pellets.radius * _settings.default.pellets.radius) * _settings.default.pellets.density;
+    pellets = new _Blob.Pellets(numberOfPellets, blob);
+    fireballs = new _Blob.Fireballs(1, blob);
   };
 
   p5.draw = _ => {
@@ -2246,6 +2368,7 @@ const game = p5 => {
     drawBackground(); // drawBorder()
 
     pellets.draw();
+    fireballs.draw();
     blob.draw(); // p5.stroke('pink')
   };
 
@@ -2264,7 +2387,10 @@ const game = p5 => {
 
   p5.keyTyped = _ => {
     if (p5.key === ' ') {
-      console.log('Split!');
+      console.log('split'); // console.log(p5.mouseX)
+      // console.log(p5.mouseY)
+
+      blob.shootFireBall(fireballs, _settings.default.fireball.speed);
     }
 
     if (p5.key === 'w') {
@@ -2306,24 +2432,28 @@ module.exports={
         "initialRadius": 32,
         "strokeSize": 9,
         "strokeOpacity": 0.2,
-        "maxSpeed": 5,
-        "eatDistance": 0.5,
-        "foodMagnetStrength": 4
+        "maxSpeed": 32 ,
+        "eatDistance": -10,
+        "foodMagnetStrength": 1
     },
     "pellets": {
-        "radius": 16,
-        "density": 0.1
+        "radius": 4,
+        "density": 0.01
     },
     "game": {
-        "width": 8192,
-        "height": 8192,
+        "width": 16192,
+        "height": 16192,
         "useWindowSize": false,
-        "bgcolor": "#f2fbff",
-        "gridColor": "#e2e2e2",
+        "bgcolor": "black",
+        "gridColor": "black",
         "gridStrokeSize": 3,
         "gridSize": 64,
         "numberOfZoomModes": 9,
         "initialZoomMode": 5
+    },
+    "fireball": {
+        "speed": 16,
+        "radius": 16
     }
 }
 },{}]},{},[1]);

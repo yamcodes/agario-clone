@@ -1,5 +1,20 @@
 {
   "cSpell.words": [
     "newzoom"
-  ]
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.classpath": true,
+    "**/.project": false,
+    "**/.*": true,
+    "**/.settings": false,
+    "**/node_modules": true,
+    "**/.factorypath": true
+  },
+  "explorerExclude.backup": null
 }

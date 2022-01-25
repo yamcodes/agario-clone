@@ -4,23 +4,27 @@
         "initialRadius": 32,
         "strokeSize": 9,
         "strokeOpacity": 0.2,
-        "maxSpeed": 5,
-        "eatDistance": 0.5,
-        "foodMagnetStrength": 4
+        "maxSpeed": 32 ,
+        "eatDistance": -10,
+        "foodMagnetStrength": 1
     },
     "pellets": {
-        "radius": 16,
-        "density": 0.1
+        "radius": 4,
+        "density": 0.01
     },
     "game": {
-        "width": 8192,
-        "height": 8192,
+        "width": 16192,
+        "height": 16192,
         "useWindowSize": false,
-        "bgcolor": "#f2fbff",
-        "gridColor": "#e2e2e2",
+        "bgcolor": "black",
+        "gridColor": "black",
         "gridStrokeSize": 3,
         "gridSize": 64,
         "numberOfZoomModes": 9,
         "initialZoomMode": 5
+    },
+    "fireball": {
+        "speed": 16,
+        "radius": 16
     }
 }

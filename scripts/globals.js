@@ -4,3 +4,8 @@ export let score = Math.round(settings.blob.initialRadius ** 2 / settings.pellet
 export function increaseScore () {
   score++
 }
+
+export let p5
+export function setP5 (sketch) {
+  p5 = sketch
+}

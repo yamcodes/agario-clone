@@ -1,16 +1,18 @@
 import settings from '../../settings.json'
-import { Blob, Pellets } from './Blob'
+import { Blob, Pellets, Fireballs } from './Blob'
 
 const game = p5 => {
   let blob
   let pellets
+  let fireballs
   let zoom = 1
   let scrollZoom = (settings.game.initialZoomMode - 1) / (settings.game.numberOfZoomModes - 1)
   p5.setup = _ => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight)
-    blob = new Blob(p5, 0, 0, settings.blob.initialRadius, '#cf1898')
-    const numberOfPellets = (p5.windowWidth * p5.windowHeight) / (settings.pellets.radius * settings.pellets.radius) * (settings.pellets.density)
-    pellets = new Pellets(p5, numberOfPellets, blob)
+    blob = new Blob(0, 0, settings.blob.initialRadius, '#ffa600')
+    const numberOfPellets = (settings.game.width * settings.game.height) / (p5.PI * settings.pellets.radius * settings.pellets.radius) * (settings.pellets.density)
+    pellets = new Pellets(numberOfPellets, blob)
+    fireballs = new Fireballs(1, blob)
   }
 
   p5.draw = _ => {
@@ -26,6 +28,7 @@ const game = p5 => {
     drawBackground()
     // drawBorder()
     pellets.draw()
+    fireballs.draw()
     blob.draw()
     // p5.stroke('pink')
   }
@@ -43,7 +46,10 @@ const game = p5 => {
 
   p5.keyTyped = _ => {
     if (p5.key === ' ') {
-      console.log('Split!')
+      console.log('split')
+      // console.log(p5.mouseX)
+      // console.log(p5.mouseY)
+      blob.shootFireBall(fireballs, settings.fireball.speed)
     }
     if (p5.key === 'w') {
       console.log('Feed!')
