@@ -38,6 +38,7 @@
 ### Step 0. Prerequisites
 - [Node.js v17.4.0](https://nodejs.org/download/release/v17.4.0/) - the version which this project was created and tested on.
 - [Git](https://git-scm.com/downloads) - for cloning this repository.
+- A terminal set up in your projects folder to clone and run this project.
 
 ### Step 1. Download
 
@@ -50,6 +51,7 @@ Alternatively, you can use [GitHub Desktop](https://desktop.github.com/), [GitHu
 ### Step 2. Install
 
 ```
+cd agario-clone
 npm install
 ```
 
@@ -69,6 +71,6 @@ Head over to `settings.json` using your favorite editor (for example: [vscode](h
 
 Please check out these previous works that helped inspire the creation of agario-clone. 🧠
 
-- **[Agario clone Javascript p5.js by kierin](https://codepen.io/xtarsy/pen/yVrgXp)** - inspired this entire project.
+- **[Agar.io coding challenge](https://thecodingtrain.com/CodingChallenges/032.1-agar.html) by [The Coding Train](https://github.com/CodingTrain)** - inspired this entire project.
 
 - **[starship](https://github.com/starship/starship)** - inspired the structure of this `README.md`.
