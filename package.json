@@ -1,17 +1,17 @@
 {
   "name": "game-1",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "sandbox for a game",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx watchify app.js -o app-bundled.js -p esmify",
+    "watch": "npx watchify app.js -o app-bundled.js -p esmify ",
     "serve": "live-server --port=3000 -q --host=localhost",
     "dev": "concurrently --kill-others \"npm run watch\" \"npm run serve\"",
     "postinstall": "patch-package",
     "start": "npm run dev"
   },
-  "author": "yam-b",
+  "author": "yamyam263",
   "license": "ISC",
   "dependencies": {
     "babelify": "^10.0.0",
@@ -24,11 +24,15 @@
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "esmify": "^2.1.1",
     "patch-package": "^6.4.7"
   }
