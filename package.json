@@ -1,6 +1,6 @@
 {
   "name": "game-1",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "sandbox for a game",
   "main": "app.js",
   "scripts": {
