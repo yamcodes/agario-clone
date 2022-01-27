@@ -1,6 +1,5 @@
-import Blob from '../assets/Blob';
-import Pellets from '../assets/Pellets';
-import settings from '../../settings.json';
+import { Blob, Pellets } from './assets';
+import settings from '../settings.json';
 
 const game = (p5) => {
   let blob;

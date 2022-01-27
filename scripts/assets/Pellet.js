@@ -1,6 +1,6 @@
 import Color from 'color';
 import settings from '../../settings.json';
-import Blob from '../assets/Blob';
+import Blob from './Blob';
 
 /** Class representing a pellet. */
 export default class Pellet extends Blob {
