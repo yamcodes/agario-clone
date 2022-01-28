@@ -1,7 +1,7 @@
 {
-  "name": "game-1",
-  "version": "0.1.1",
-  "description": "sandbox for a game",
+  "name": "agario-clone",
+  "version": "0.2.1",
+  "description": "The easily tweakable clone for modders, developers and .io games enthusiasts of any level!",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
