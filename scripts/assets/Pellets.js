@@ -1,5 +1,6 @@
 import settings from '../../settings.json';
 import Pellet from './Pellet';
+import p5 from '../../testp5';
 /** Class representing a group of pellets. */
 export default class Pellets {
   /**
@@ -7,7 +8,7 @@ export default class Pellets {
    * @param n - Number of pellets
    * @param blob - Blob of the player that eats the pellets
    */
-  constructor(p5, n, blob) {
+  constructor(n, blob) {
     this.n = n;
     this.blob = blob;
     this.pellets = [];
@@ -30,14 +31,14 @@ export default class Pellets {
     this.pellets[i] = value;
   }
 
-  draw(p5) {
+  draw() {
     this.pellets.forEach((pellet) => {
       if (pellet.alive) {
         const left = this.blob.x - p5.windowWidth / p5.getZoom() / 2 - pellet.r;
         const right = this.blob.x + p5.windowWidth / p5.getZoom() / 2 + pellet.r;
         const top = this.blob.y + p5.windowHeight / p5.getZoom() / 2 + pellet.r;
         const bottom = this.blob.y - p5.windowHeight / p5.getZoom() / 2 - pellet.r;
-        if (this.blob.isEating(p5, pellet) && pellet.edible) this.blob.eat(p5, pellet);
+        if (this.blob.isEating(pellet) && pellet.edible) this.blob.eat(pellet);
         if (
           pellet.x === p5.constrain(pellet.x, left, right)
           && pellet.y === p5.constrain(pellet.y, bottom, top)

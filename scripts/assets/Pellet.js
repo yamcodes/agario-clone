@@ -1,6 +1,7 @@
 import Color from 'color';
 import settings from '../../settings.json';
 import Blob from './Blob';
+import p5 from '../../testp5';
 
 /** Class representing a pellet. */
 export default class Pellet extends Blob {
@@ -15,7 +16,7 @@ export default class Pellet extends Blob {
     this.edible = true;
   }
 
-  draw(p5) {
+  draw() {
     p5.noStroke();
     p5.fill(this.color.hex());
     p5.circle(this.x, this.y, this.r * 2);

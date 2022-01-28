@@ -1,6 +1,6 @@
 import Color from 'color';
 import settings from '../../settings.json';
-
+import p5 from '../../testp5';
 /** Class representing a blob. */
 export default class Blob {
   /**
@@ -21,18 +21,18 @@ export default class Blob {
   }
 
   // eating function. determining if blob eats another blob
-  isEating(p5, other) {
+  isEating(other) {
     const blobDistance = p5.createVector(this.x, this.y).dist(p5.createVector(other.x, other.y));
     const blobRadii = this.r + settings.blob.strokeSize / 2 + other.r;
     return blobDistance < blobRadii - 2 * settings.blob.eatDistance * other.r;
   }
 
-  containing(p5, other) {
+  containing(other) {
     const blobDistance = p5.createVector(this.x, this.y).dist(p5.createVector(other.x, other.y));
     return blobDistance < this.r + settings.blob.strokeSize / 2 + other.r - 2 * other.r;
   }
 
-  eat(p5, pellet) {
+  eat(pellet) {
     // this.r-=0.01
     // this.newRadius = p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
     // pellet.edible = false
@@ -43,7 +43,7 @@ export default class Blob {
     b.add(t);
     pellet.x = b.x;
     pellet.y = b.y;
-    if (this.containing(p5, pellet)) {
+    if (this.containing(pellet)) {
       pellet.alive = false;
       this.newRadius = p5.sqrt(this.newRadius * this.newRadius + pellet.r * pellet.r); // pi*r^2 = sum of areas
       global.score += 1;
@@ -54,7 +54,7 @@ export default class Blob {
     // pellet.alive = false
   }
 
-  draw(p5) {
+  draw() {
     p5.fill(this.color);
     p5.strokeWeight(settings.blob.strokeSize);
     p5.stroke(Color(this.color).darken(settings.blob.strokeOpacity).hex());
