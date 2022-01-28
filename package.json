@@ -1,11 +1,11 @@
 {
   "name": "agario-clone",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "description": "The easily tweakable clone for modders, developers and .io games enthusiasts of any level!",
-  "main": "app.js",
+  "main": "game.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx watchify app.js -o app-bundled.js -p esmify ",
+    "watch": "npx watchify game.js -o game-bundled.js -p esmify ",
     "serve": "live-server --port=3000 -q --host=localhost",
     "dev": "concurrently --kill-others \"npm run watch\" \"npm run serve\"",
     "postinstall": "patch-package",
