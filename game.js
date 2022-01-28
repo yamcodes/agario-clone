@@ -1,5 +1,5 @@
 import p5 from './p5-instantiate';
-import { Blob, Pellets } from './scripts/assets';
+import { Blob, Pellets } from './assets';
 import settings from './settings.json';
 // BUG: zooming messes the game up, allows you to cheat and look ahead. potential fix: render only what's on screen (100% of it)
 

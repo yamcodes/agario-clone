@@ -1,7 +1,7 @@
 import Color from 'color';
-import settings from '../../settings.json';
+import settings from '../settings.json';
 import Blob from './Blob';
-import p5 from '../../testp5';
+import p5 from '../p5-instantiate';
 
 /** Class representing a pellet. */
 export default class Pellet extends Blob {

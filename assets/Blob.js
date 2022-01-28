@@ -1,6 +1,6 @@
 import Color from 'color';
-import settings from '../../settings.json';
-import p5 from '../../testp5';
+import settings from '../settings.json';
+import p5 from '../p5-instantiate';
 /** Class representing a blob. */
 export default class Blob {
   /**

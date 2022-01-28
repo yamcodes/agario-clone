@@ -1,6 +1,6 @@
-import settings from '../../settings.json';
+import settings from '../settings.json';
 import Pellet from './Pellet';
-import p5 from '../../testp5';
+import p5 from '../p5-instantiate';
 /** Class representing a group of pellets. */
 export default class Pellets {
   /**

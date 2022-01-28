@@ -1,6 +1,6 @@
 {
   "name": "agario-clone",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "The easily tweakable clone for modders, developers and .io games enthusiasts of any level!",
   "main": "game.js",
   "scripts": {
