@@ -1,6 +1,7 @@
 # agario-clone 
 > Clone of Agar.io for tweaking, implementing new features, and learning how to program with [p5.js](https://p5js.org/).
-
+> 
+[![Known Vulnerabilities](https://snyk.io/test/github/yamyam263/agario-clone/badge.svg)](https://snyk.io/test/github/yamyam263/agario-clone)
 [![Agar.io](https://img.shields.io/badge/based%20on-agar.io-informational)](https://agar.io)
 [![Airbnb code style](https://img.shields.io/badge/code%20style-airbnb-FF5A5F)](https://github.com/airbnb/javascript)
 
