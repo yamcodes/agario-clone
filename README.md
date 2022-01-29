@@ -1,11 +1,10 @@
-# agario-clone
+# agario-clone 
 > Clone of Agar.io for tweaking, implementing new features, and learning how to program with [p5.js](https://p5js.org/).
 
-<p align="center">
-  🔴🟠🟡 Check out 
-  <a href="https://agar.io">Agar.io</a>
-  to learn more! 🟢🔵🟣
-</p>
+[![Agar.io](https://img.shields.io/badge/based%20on-agar.io-informational)](https://agar.io)
+[![Airbnb code style](https://img.shields.io/badge/code%20style-airbnb-FF5A5F)](https://github.com/airbnb/javascript)
+
+
 <h1></h1>
 
 
