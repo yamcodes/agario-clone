@@ -113,3 +113,5 @@ app-bundled.js
 .eslintrc.json
 
 .gitignore_folder
+
+game-bundled.js
