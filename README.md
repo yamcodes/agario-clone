@@ -37,6 +37,7 @@
 
 ### Step 0. Prerequisites
 - [Node.js v17.4.0](https://nodejs.org/download/release/v17.4.0/) - the version which this project was created and tested on.
+- [Yarn](https://yarnpkg.com/) - a package manager aimed at stability.
 - [Git](https://git-scm.com/downloads) - for cloning this repository.
 - A terminal set up in your projects folder to clone and run this project.
 
@@ -52,13 +53,13 @@ Alternatively, you can use [GitHub Desktop](https://desktop.github.com/), [GitHu
 
 ```
 cd agario-clone
-npm install
+yarn
 ```
 
 ### Step 3. Run
 
 ```
-npm start
+yarn start
 ```
 
 ✔️ You're done! Head over to `localhost:3000` on your browser to play the game!
