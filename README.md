@@ -10,8 +10,8 @@
 
 
 <img
-  src="https://github.com/yamyam263/agario-clone/blob/main/sr.gif"
-  alt="Starship with iTerm2 and the Snazzy theme"
+  src="https://raw.githubusercontent.com/yamyam263/agario-clone/ec07320af2d858c61c6539e0421a8cc9b3135a99/promo.gif"
+  alt="Agario-clone configuration example"
   width="50%"
   align="right"
 />
