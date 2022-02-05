@@ -43,7 +43,7 @@ export default class Blob {
     b.add(t);
     pellet.x = b.x;
     pellet.y = b.y;
-    if (this.containing(pellet)) {
+    if (this.containing(pellet) && global.score < settings.blob.maxScore) {
       pellet.alive = false;
       this.newRadius = p5.sqrt(this.newRadius * this.newRadius + pellet.r * pellet.r); // pi*r^2 = sum of areas
       global.score += 1;
@@ -52,6 +52,11 @@ export default class Blob {
       // this.r = p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
     }
     // pellet.alive = false
+  }
+
+  /** gets the radius of the blob based on score */
+  static getEstimatedRadius(score = global.score) {
+    return p5.sqrt(score) * settings.pellets.radius;
   }
 
   draw() {

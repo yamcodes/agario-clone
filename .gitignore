@@ -115,3 +115,5 @@ app-bundled.js
 .gitignore_folder
 
 game-bundled.js
+
+*.code-workspace
