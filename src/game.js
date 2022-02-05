@@ -10,7 +10,6 @@ const gameArea = settings.game.width * settings.game.height;
 const numberOfPellets = (gameArea / pelletArea) * (settings.pellets.density);
 const pellets = new Pellets(numberOfPellets, blob);
 let zoom = 1;
-const zoom2 = 1;
 let scrollZoom = (settings.game.initialZoomMode - 1) / (settings.game.numberOfZoomModes - 1);
 let lerpedScrollZoom = scrollZoom;
 
