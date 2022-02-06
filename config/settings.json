@@ -11,7 +11,7 @@
         "color": "red"
     },
     "pellets": {
-        "radius": 20,
+        "radius": 30,
         "density": 0.05
     },
     "game": {
@@ -21,13 +21,13 @@
         "viewHeight": 1080, 
         "useWindowSize": false,
         "bgcolor": "#f2fbff",
-        "gridColor": "#e2e2e2",
+        "gridColor": "#cad1d4",
         "gridStrokeSize": 3,
-        "gridSize": 64,
+        "gridSize": 100,
         "maxZoom": 3,
         "numberOfZoomModes": 9,
         "initialZoomMode": 1,
-        "minBlobZoomFactor": 0.1,
+        "minBlobZoomFactor": 0.05,
         "maxBlobZoomFactor": 0.75,
         "username": "yamyam263"
     }
