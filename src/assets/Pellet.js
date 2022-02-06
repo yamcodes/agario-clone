@@ -29,9 +29,9 @@ export default class Pellet extends Blob {
    */
   static getRandomColor(lighten = 0) {
     if (lighten < 0 || lighten > 1) throw new RangeError('lighten must be between 0 and 1.');
-    const r = 256 - Number(p5.random() * 256 * (1 - lighten));
-    const g = 256 - Number(p5.random() * 256 * (1 - lighten));
-    const b = 256 - Number(p5.random() * 256 * (1 - lighten));
+    const r = p5.map(p5.random(), 0, 1, 256, 256 * lighten);
+    const g = p5.map(p5.random(), 0, 1, 256, 256 * lighten);
+    const b = p5.map(p5.random(), 0, 1, 256, 256 * lighten);
     return Color.rgb([r, g, b]);
   }
 }
