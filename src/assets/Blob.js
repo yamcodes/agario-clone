@@ -85,7 +85,7 @@ export default class Blob {
     target.setMag(speed);
     const pos = p5.createVector(this.x, this.y);
     pos.add(target);
-    const a = -this.r / Math.sqrt(2);
+    const a = -this.r / p5.sqrt(2);
     const w = settings.game.width / 2 + a;
     const h = settings.game.height / 2 + a;
     this.x = p5.constrain(pos.x, -w, w);

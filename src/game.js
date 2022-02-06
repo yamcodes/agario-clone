@@ -14,7 +14,7 @@ let scrollZoom = (settings.game.initialZoomMode - 1) / (settings.game.numberOfZo
 let lerpedScrollZoom = scrollZoom;
 
 p5.setup = () => {
-  global.score = Math.round(settings.blob.initialRadius ** 2 / settings.pellets.radius ** 2);
+  global.score = p5.round(settings.blob.initialRadius ** 2 / settings.pellets.radius ** 2);
   p5.createCanvas(p5.windowWidth, p5.windowHeight);
 };
 
@@ -59,7 +59,7 @@ p5.mapZoomByScore = () => {
 };
 
 p5.mouseWheel = (e) => {
-  const notches = (-1) * Math.ceil(Math.abs(e.delta / 100)) * Math.sign(e.delta);
+  const notches = (-1) * p5.ceil(p5.abs(e.delta / 100)) * Math.sign(e.delta);
   const zoomRatio = notches / (settings.game.numberOfZoomModes - 1);
   if (settings.game.numberOfZoomModes > 1) scrollZoom = p5.constrain(scrollZoom + zoomRatio, 0, 1);
 };
