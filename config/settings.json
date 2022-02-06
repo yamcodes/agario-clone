@@ -17,8 +17,8 @@
     "game": {
         "width": 8192,
         "height": 8192,
-        "viewWidth": 1440,
-        "viewHeight": 900, 
+        "viewWidth": 1920,
+        "viewHeight": 1080, 
         "useWindowSize": false,
         "bgcolor": "#f2fbff",
         "gridColor": "#e2e2e2",
