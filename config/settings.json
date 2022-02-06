@@ -27,7 +27,7 @@
         "numberOfZoomModes": 9,
         "initialZoomMode": 5,
         "minBlobZoomFactor": 0.25,
-        "maxBlobZoomFactor": 0.75
-
+        "maxBlobZoomFactor": 0.75,
+        "username": "yamyam263"
     }
 }

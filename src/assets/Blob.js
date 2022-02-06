@@ -71,7 +71,7 @@ export default class Blob {
     p5.fill('white');
     p5.stroke('black');
     p5.strokeWeight(this.r / 32);
-    p5.text('yamyam263', this.x, this.y);
+    p5.text(settings.game.username, this.x, this.y);
     p5.textSize(this.r / 5);
     p5.text(global.score, this.x, this.y + this.r / 2);
     /**
