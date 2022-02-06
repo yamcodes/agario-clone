@@ -3,7 +3,7 @@ import { Blob, Pellets } from './assets';
 import settings from '../config/settings.json';
 // BUG: zooming messes the game up, allows you to cheat and look ahead. potential fix: render only what's on screen (100% of it)
 
-const blob = new Blob(0, 0, settings.blob.initialRadius, '#cf1898');
+const blob = new Blob(0, 0, settings.blob.initialRadius, settings.blob.color);
 const pelletArea = p5.PI * settings.pellets.radius ** 2;
 // BUG density changes with screen size, when the window is small it appears there is less density
 const gameArea = settings.game.width * settings.game.height;
@@ -48,10 +48,11 @@ p5.mapZoomByView = (
 p5.mapZoomByScore = () => {
   const finalRadius = Blob.getEstimatedRadius(settings.blob.maxScore);
   const closestEdge = p5.min(settings.game.viewWidth, settings.game.viewHeight);
+  const f = (x) => p5.sqrt(x);
   const factor = p5.map(
-    blob.r,
-    settings.blob.initialRadius,
-    finalRadius,
+    f(blob.r),
+    f(settings.blob.initialRadius),
+    f(finalRadius),
     settings.game.minBlobZoomFactor,
     settings.game.maxBlobZoomFactor,
   );

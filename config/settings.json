@@ -1,17 +1,18 @@
 {
     "$schema": "./settings-schema.jsonc",
     "blob": {
-        "initialRadius": 32,
+        "initialRadius": 64,
         "strokeSize": 9,
         "strokeOpacity": 0.2,
         "maxSpeed": 5,
         "eatDistance": 0.5,
         "foodMagnetStrength": 5,
-        "maxScore": 22500
+        "maxScore": 3000,
+        "color": "red"
     },
     "pellets": {
-        "radius": 16,
-        "density": 0.1
+        "radius": 20,
+        "density": 0.05
     },
     "game": {
         "width": 8192,
@@ -25,8 +26,8 @@
         "gridSize": 64,
         "maxZoom": 3,
         "numberOfZoomModes": 9,
-        "initialZoomMode": 5,
-        "minBlobZoomFactor": 0.25,
+        "initialZoomMode": 1,
+        "minBlobZoomFactor": 0.1,
         "maxBlobZoomFactor": 0.75,
         "username": "yamyam263"
     }
