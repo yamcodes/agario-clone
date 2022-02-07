@@ -12,7 +12,7 @@
               "initialRadius": 32,
               "strokeSize": 9,
               "strokeOpacity": 0.2,
-              "maxSpeed": 5,
+              "initialSpeed": 5,
               "eatDistance": 0
           },
           "pellets": {
@@ -48,7 +48,7 @@
                   "initialRadius": 32,
                   "strokeSize": 9,
                   "strokeOpacity": 0.2,
-                  "maxSpeed": 5,
+                  "initialSpeed": 5,
                   "eatDistance": 0
               }
           ],
@@ -56,7 +56,7 @@
               "initialRadius",
               "strokeSize",
               "strokeOpacity",
-              "maxSpeed",
+              "initialSpeed",
               "eatDistance"
           ],
           "properties": {
@@ -92,10 +92,10 @@
                       0.2
                   ]
               },
-              "maxSpeed": {
-                  "$id": "#/properties/blob/properties/maxSpeed",
+              "initialSpeed": {
+                  "$id": "#/properties/blob/properties/initialSpeed",
                   "type": "integer",
-                  "title": "The maxSpeed schema",
+                  "title": "The initialSpeed schema",
                   "description": "An explanation about the purpose of this instance.",
                   "default": 0,
                   "examples": [

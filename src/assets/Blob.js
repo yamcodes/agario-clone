@@ -80,7 +80,9 @@ export default class Blob {
      */
     const target = p5.createVector(p5.mouseX - p5.width / 2, p5.mouseY - p5.height / 2);
     const slowDownBound = this.r * p5.getZoom();
-    let speed = settings.blob.maxSpeed;
+    const { initialSpeed, finalSpeed, initialRadius } = settings.blob;
+    const finalRadius = Blob.getEstimatedRadius(settings.blob.maxScore);
+    let speed = p5.map(this.r, initialRadius, finalRadius, initialSpeed, finalSpeed);
     if (target.mag() < slowDownBound) speed *= target.mag() / slowDownBound;
     target.setMag(speed);
     const pos = p5.createVector(this.x, this.y);

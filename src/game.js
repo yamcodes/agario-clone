@@ -53,8 +53,8 @@ p5.mapZoomByScore = () => {
     f(blob.r),
     f(settings.blob.initialRadius),
     f(finalRadius),
-    settings.game.minBlobZoomFactor,
-    settings.game.maxBlobZoomFactor,
+    settings.game.initialBlobZoomFactor,
+    settings.game.finalBlobZoomFactor,
   );
   return (closestEdge / (2 * blob.r)) * factor;
 };
