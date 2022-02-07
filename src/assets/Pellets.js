@@ -1,16 +1,17 @@
 import settings from '../../config/settings.json';
 import Pellet from './Pellet';
 import p5 from '../p5-instantiate';
+
 /** Class representing a group of pellets. */
 export default class Pellets {
   /**
    * Create a group of pellets.
-   * @param n - Number of pellets
-   * @param blob - Blob of the player that eats the pellets
+   * @param {number} n - Number of pellets
+   * @param {Player} player - Player that eats the pellets
    */
-  constructor(n, blob) {
+  constructor(n, player) {
     this.n = n;
-    this.blob = blob;
+    this.player = player;
     this.pellets = [];
     for (let i = 0; i < this.n; i += 1) {
       const left = -settings.game.width / 2 + settings.pellets.radius;
@@ -34,15 +35,15 @@ export default class Pellets {
   draw() {
     this.pellets.forEach((pellet) => {
       if (pellet.alive) {
-        const left = this.blob.x - p5.windowWidth / p5.getZoom() / 2 - pellet.r;
-        const right = this.blob.x + p5.windowWidth / p5.getZoom() / 2 + pellet.r;
-        const top = this.blob.y + p5.windowHeight / p5.getZoom() / 2 + pellet.r;
-        const bottom = this.blob.y - p5.windowHeight / p5.getZoom() / 2 - pellet.r;
-        if (this.blob.isEating(pellet) && pellet.edible) this.blob.eat(pellet);
+        const left = this.player.x - p5.windowWidth / p5.getZoom() / 2 - pellet.r;
+        const right = this.player.x + p5.windowWidth / p5.getZoom() / 2 + pellet.r;
+        const top = this.player.y + p5.windowHeight / p5.getZoom() / 2 + pellet.r;
+        const bottom = this.player.y - p5.windowHeight / p5.getZoom() / 2 - pellet.r;
+        if (this.player.isEating(pellet) && pellet.edible) this.player.eat(pellet);
         if (
           pellet.x === p5.constrain(pellet.x, left, right)
           && pellet.y === p5.constrain(pellet.y, bottom, top)
-        ) pellet.draw(p5);
+        ) pellet.draw();
       }
     });
   }

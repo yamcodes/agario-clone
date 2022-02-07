@@ -1,19 +1,27 @@
 {
     "$schema": "./settings-schema.jsonc",
-    "blob": {
+    "player": {
         "initialRadius": 64,
-        "strokeSize": 9,
-        "strokeOpacity": 0.2,
         "initialSpeed": 5,
         "finalSpeed": 1,
         "eatDistance": 0.5,
-        "foodMagnetStrength": 5,
-        "maxScore": 22500,
-        "color": "red"
+        "foodMagnetStrength":5,
+        "maxMass": 22500,
+        "color": "red",
+        "randomColor": true
+    },
+    "blob": {
+        "strokeSize": 9,
+        "strokeOpacity": 0.1
     },
     "pellets": {
         "radius": 30,
-        "density": 0.05
+        "density": 0.2
+    },
+    "food": {
+        "radius": 80,
+        "speed": 15,
+        "deceleration":0.98
     },
     "game": {
         "width": 8192,
@@ -28,8 +36,9 @@
         "maxZoom": 3,
         "numberOfZoomModes": 9,
         "initialZoomMode": 1,
-        "initialBlobZoomFactor": 0.05,
-        "finalBlobZoomFactor": 0.75,
+        "initialPlayerZoomFactor": 0.05,
+        "finalPlayerZoomFactor": 0.75,
+        "eatSelfFoodAfterNSeconds": 1,
         "username": "yamyam263"
     }
 }
