@@ -76,6 +76,7 @@ export default class Player extends Blob {
 
   // eating function. determining if player eats another blob
   eats(other) {
+    if (other.r >= this.r) return false;
     const blobDistance = p5.createVector(this.x, this.y).dist(p5.createVector(other.x, other.y));
     const blobRadii = this.r + settings.blob.strokeSize / 2 + other.r;
     return blobDistance < blobRadii - 2 * settings.player.eatDistance * other.r;
