@@ -17,12 +17,12 @@ export default class Food {
   draw() {
     this.food.forEach((food) => {
       if (food.alive) {
-        if (!this.player.intersecting(food)) food.edible = true;
+        if (!this.player.intersects(food)) food.edible = true;
         const left = this.player.x - p5.windowWidth / p5.getZoom() / 2 - food.r;
         const right = this.player.x + p5.windowWidth / p5.getZoom() / 2 + food.r;
         const top = this.player.y + p5.windowHeight / p5.getZoom() / 2 + food.r;
         const bottom = this.player.y - p5.windowHeight / p5.getZoom() / 2 - food.r;
-        if (this.player.isEating(food) && food.edible) {
+        if (this.player.eats(food) && food.edible) {
           this.player.eat(food);
         }
         if (
@@ -32,7 +32,7 @@ export default class Food {
         ) {
           const foodVect = p5.createVector(food.x, food.y);
           const trajectory = food.mouse;
-          if (!this.player.containing(food)) {
+          if (!this.player.contains(food)) {
             food.speed = p5.lerp(0, food.speed, settings.food.deceleration);
           }
           trajectory.setMag(food.speed);

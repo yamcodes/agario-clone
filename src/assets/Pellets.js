@@ -39,7 +39,7 @@ export default class Pellets {
         const right = this.player.x + p5.windowWidth / p5.getZoom() / 2 + pellet.r;
         const top = this.player.y + p5.windowHeight / p5.getZoom() / 2 + pellet.r;
         const bottom = this.player.y - p5.windowHeight / p5.getZoom() / 2 - pellet.r;
-        if (this.player.isEating(pellet) && pellet.edible) this.player.eat(pellet);
+        if (this.player.eats(pellet) && pellet.edible) this.player.eat(pellet);
         if (
           pellet.x === p5.constrain(pellet.x, left, right)
           && pellet.y === p5.constrain(pellet.y, bottom, top)

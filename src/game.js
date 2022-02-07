@@ -51,7 +51,7 @@ p5.mapZoomByView = (
 
 /** maps the zoom s.t. player fills screen when it reached max mass */
 p5.mapZoomByMass = () => {
-  const finalRadius = Player.getEstimatedRadius(settings.player.maxMass);
+  const finalRadius = Player.getRadiusByMass(settings.player.maxMass);
   const closestEdge = p5.min(settings.game.viewWidth, settings.game.viewHeight);
   const f = (x) => p5.sqrt(x);
   const factor = p5.map(

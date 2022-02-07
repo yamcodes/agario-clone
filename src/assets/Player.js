@@ -19,11 +19,6 @@ export default class Player extends Blob {
     this.mass = initialMass;
   }
 
-  /** gets the radius of the player based on mass */
-  static getEstimatedRadius(mass = this.mass) {
-    return p5.sqrt(mass) * settings.pellets.radius;
-  }
-
   eat(blob) {
     // this.r-=0.01
     // this.newRadius = p5.sqrt(this.r * this.r + pellet.r * pellet.r) // pi*r^2 = sum of areas
@@ -35,7 +30,7 @@ export default class Player extends Blob {
     b.add(t);
     blob.x = b.x;
     blob.y = b.y;
-    if (this.containing(blob) && this.mass < settings.player.maxMass) {
+    if (this.contains(blob) && this.mass < settings.player.maxMass) {
       blob.alive = false;
       this.mass += Blob.getMassByRadius(blob.r);
     }
@@ -66,7 +61,7 @@ export default class Player extends Blob {
      */
     const target = p5.createVector(p5.mouseX - p5.width / 2, p5.mouseY - p5.height / 2);
     const slowDownBound = this.r * p5.getZoom();
-    const finalRadius = Player.getEstimatedRadius(maxMass);
+    const finalRadius = Player.getMassByRadius(maxMass);
     let speed = p5.map(this.r, initialRadius, finalRadius, initialSpeed, finalSpeed);
     if (target.mag() < slowDownBound) speed *= target.mag() / slowDownBound;
     target.setMag(speed);
@@ -80,18 +75,18 @@ export default class Player extends Blob {
   }
 
   // eating function. determining if player eats another blob
-  isEating(other) {
+  eats(other) {
     const blobDistance = p5.createVector(this.x, this.y).dist(p5.createVector(other.x, other.y));
     const blobRadii = this.r + settings.blob.strokeSize / 2 + other.r;
     return blobDistance < blobRadii - 2 * settings.player.eatDistance * other.r;
   }
 
-  containing(other) {
+  contains(other) {
     const blobDistance = p5.createVector(this.x, this.y).dist(p5.createVector(other.x, other.y));
     return blobDistance < this.r + settings.blob.strokeSize / 2 - other.r;
   }
 
-  intersecting(other) {
+  intersects(other) {
     const blobDistance = p5.createVector(this.x, this.y).dist(p5.createVector(other.x, other.y));
     return blobDistance < this.r + settings.blob.strokeSize / 2 + other.r;
   }
