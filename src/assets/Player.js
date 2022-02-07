@@ -59,7 +59,7 @@ export default class Player extends Blob {
     p5.strokeWeight(this.r / 32);
     p5.text(settings.game.username, this.x, this.y);
     p5.textSize(this.r / 5);
-    p5.text(this.mass, this.x, this.y + this.r / 2);
+    p5.text(Player.getMassByRadius(this.r), this.x, this.y + this.r / 2);
     /**
      * Vector representing the location of the mouse, originated at the center of the canvas.
      * @type {number}
