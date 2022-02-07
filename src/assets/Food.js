@@ -32,7 +32,7 @@ export default class Food {
         ) {
           const foodVect = p5.createVector(food.x, food.y);
           const trajectory = food.mouse;
-          if (!this.player.contains(food)) {
+          if (!this.player.eats(food)) {
             food.speed = p5.lerp(0, food.speed, settings.food.deceleration);
           }
           trajectory.setMag(food.speed);

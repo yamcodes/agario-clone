@@ -93,9 +93,9 @@ export default class Player extends Blob {
   }
 
   reduceMass(m) {
-    const initialMass = p5.round(Player.getMassByRadius(settings.player.initialRadius));
+    const foodMass = Player.getMassByRadius(settings.food.radius);
     const newMass = this.mass - m;
-    if (newMass > initialMass) {
+    if (newMass > foodMass) {
       this.mass = newMass;
       return true;
     }
