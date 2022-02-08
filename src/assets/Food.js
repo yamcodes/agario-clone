@@ -30,15 +30,27 @@ export default class Food {
         && food.y === p5.constrain(food.y, bottom, top)
         && food.alive
         ) {
-          const foodVect = p5.createVector(food.x, food.y);
-          const trajectory = food.mouse;
           if (!this.player.eats(food)) {
             food.speed = p5.lerp(0, food.speed, settings.food.deceleration);
           }
+          const trajectory = food.mouse;
+          const foodVect = p5.createVector(food.x, food.y);
           trajectory.setMag(food.speed);
           foodVect.add(trajectory);
-          food.x = foodVect.x;
-          food.y = foodVect.y;
+          const a = -food.r / p5.sqrt(2);
+          const w = settings.game.width / 2 + a;
+          const h = settings.game.height / 2 + a;
+          if (foodVect.x !== p5.constrain(foodVect.x, -w, w)) {
+            food.mouse.x *= -1;
+            food.edible = true;
+          }
+          if (foodVect.y !== p5.constrain(foodVect.y, -h, h)) {
+            food.mouse.y *= -1;
+            food.edible = true;
+          }
+
+          food.x = p5.constrain(foodVect.x, -w, w);
+          food.y = p5.constrain(foodVect.y, -h, h);
           food.draw();
         }
       }

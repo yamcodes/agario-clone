@@ -20,13 +20,13 @@ export default class Blob {
     this.edible = edible;
   }
 
-  draw(x = this.x, y = this.y) {
+  draw() {
     const { strokeOpacity, strokeSize } = settings.blob;
     p5.fill(this.color.hex());
     p5.strokeWeight(strokeSize);
     p5.stroke(this.color.darken(strokeOpacity).hex());
     p5.fill(this.color.hex());
-    p5.circle(x, y, this.r * 2);
+    p5.circle(this.x, this.y, this.r * 2);
   }
 
   static getMassByRadius(radius) {
