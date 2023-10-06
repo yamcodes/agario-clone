@@ -29,7 +29,7 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "color": "^4.2.0",
+    "color": "^4.2.3",
     "p5": "^1.4.0"
   }
 }
